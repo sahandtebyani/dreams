@@ -1,0 +1,12 @@
+<div class="col-lg-4 col-md-4 all des" style="position: absolute; left: 0%; top: 0px;">
+                                    <div class="product-item">
+                                        <a href="{{ item.get_absolute_url }}"><img src="{{ item.image.url }}"
+                                                                                   alt="{{ item.title }}" height="230px"
+                                                                                   width="355"></a>
+                                        <div class="down-content">
+                                            <a href="{{ item.get_absolute_url }}"><h4>{{ item.title }}</h4></a>
+
+                                            <p>{{ item.description|truncatechars:40 }}</p>
+                                        </div>
+                                    </div>
+                                </div>

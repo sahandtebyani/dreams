@@ -1,0 +1,10 @@
+
+
+<div class="filters">
+    <ul>
+        <li class="active" data-filter="*"><a href="{% url 'items' %}">All Items</a></li>
+        {% for category in categories %}
+        <li data-filter=".des" class=""><a href="/item/{{ category.name }}">{{ category }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

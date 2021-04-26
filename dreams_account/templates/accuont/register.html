@@ -1,0 +1,103 @@
+{% extends 'shared/_MainLayout.html' %}
+{% block title %}
+    <title>Register Page</title>
+{% endblock %}
+
+{% block content %}
+    <div class="page-heading contact-heading header-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-content">
+                        <h4>Register</h4>
+                        <h2>let’s get in touch</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="send-message">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Register Here</h2>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="contact-form">
+                        <form id="contact" action="" method="post">
+                            {% csrf_token %}
+                            <label for="{{ register_form.first_name.id_for_label }}">{{ register_form.first_name.label }}</label>
+                            {{ register_form.first_name }}
+                            {% for error in register_form.first_name.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                            <label for="{{ register_form.last_name.id_for_label }}">{{ register_form.last_name.label }}</label>
+                            {{ register_form.last_name }}
+                            {% for error in register_form.last_name.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                            <label for="{{ register_form.email.id_for_label }}">{{ register_form.email.label }}</label>
+                            {{ register_form.email }}
+                            {% for error in register_form.email.errors %}
+                                <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                            <label for="{{ register_form.password.id_for_label }}">{{ register_form.password.label }}</label>
+                            {{ register_form.password }}
+                            {% for error in register_form.password.errors %}
+                                <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="filled-button">Submit
+                                    </button>
+                                </fieldset>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <ul class="accordion">
+                        <li>
+                            <a class="active">Accordion Title One</a>
+                            <div class="content" style="display: block;">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester
+                                    consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur
+                                    adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti
+                                    elite.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a>Second Title Here</a>
+                            <div class="content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester
+                                    consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur
+                                    adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti
+                                    elite.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a>Accordion Title Three</a>
+                            <div class="content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester
+                                    consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur
+                                    adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti
+                                    elite.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a>Fourth Accordion Title</a>
+                            <div class="content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester
+                                    consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur
+                                    adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti
+                                    elite.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'shared/_MainLayout.html' %}
+{% block title %}
+    <title>Goals List</title>
+{% endblock %}
+
+{% block content %}
+    <div class="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="filters">
+                        <ul>
+                            <li class="active" data-filter="*">All Products</li>
+                            <li data-filter=".des" class="">Featured</li>
+                            <li data-filter=".dev" class="">Flash Deals</li>
+                            <li data-filter=".gra" class="">Last Minute</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="filters-content">
+                        <div class="row">
+                            <div class=" col-md-8">
+                                <div class="product-item">
+                                    <a href="#"><img src="{{ item.image.url }}" alt="{{ item.title }}"
+                                                     height="460px" width="710"></a>
+                                    <div class="down-content">
+                                        <a href="#"><h4>{{ item.title }}</h4></a>
+                                        <p>{{ item.description|truncatechars:40 }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="down-content">
+                                    {% for Tag in tags %}
+                                        <a href="{{ Tag.get_tag_url }}">{{ Tag }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for gallery in item_gallery %}
+                                <div class="item {{ forloop.first|yesno:'active,' }}">
+                                    {% for image in gallery %}
+                                        <a href=""><img src="{{ image.image.url }}" alt="{{ image.title }}"
+                                                        style="width: 160px ;height: 90px"></a>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                           data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                           data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                 <div class="col-md-12">
+                    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for item_list in related_item %}
+                                <div class="item {{ forloop.first|yesno:'active,' }}">
+                                    {% for item in item_list %}
+                                        {% include 'item/item_component.html' with item=item %}
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                           data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                           data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
